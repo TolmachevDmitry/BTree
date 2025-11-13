@@ -7,9 +7,7 @@ import java.util.Comparator;
 import java.util.Deque;
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import lombok.NoArgsConstructor;
 
@@ -111,11 +109,23 @@ public class BTree<T> implements IBTree<T> {
     }
 
     private List<T> getSubElemList(List<T> list, int a, int b) {
-        return new ArrayList<>(list.subList(a, b));
+        ArrayList<T> sybList = new ArrayList<>();
+
+        for (int i = a; i < b; i++) {
+            sybList.add(list.get(i));
+        }
+
+        return sybList;
     }
 
     private List<Node> getSubChildList(List<Node> list, int a, int b) {
-        return new ArrayList<>(list.subList(a, b));
+        ArrayList<Node> sybList = new ArrayList<>();
+
+        for (int i = a; i < b; i++) {
+            sybList.add(list.get(i));
+        }
+        
+        return sybList;
     }
 
     private SplitedNode splitNode(Node node) {
